@@ -1,0 +1,16 @@
+<div class="card-container">
+    <ng-container *ngFor="let card of cards">
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image" [style.backgroundImage]="'url(' + card.bannerImage + ')'"></div>
+          <h1>{{ card.title }}</h1>
+          <p>{{card.description}}</p>
+        </div>
+        <div class="button-wrapper"> 
+          <button class="btn outline">DETAILS</button>
+          <button class="btn fill">SUBSCRIBE</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  

@@ -1,0 +1,25 @@
+<div class="register-container">
+    <div class="register-box">
+      <img src="../../../assets/logo.png" alt="Logo">
+      <form>
+        <div class="form-group">
+          <input type="text" id="username" name="username" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="creatorCheckbox" name="creatorCheckbox"><label>I am a creator</label>
+        </div>
+        <button type="submit">Register</button>
+      </form>
+      <p class="login-link">Already have an account? <a (click)="navigateToLogin()">Login here</a></p>
+    </div>
+  </div>
+  
