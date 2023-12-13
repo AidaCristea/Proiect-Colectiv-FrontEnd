@@ -12,6 +12,8 @@ import { CardListComponent } from './components/subscriber/card-list/card-list.c
 import { MenuComponent } from './components/menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SubscriptionsPageComponent } from './components/subscriber/subscriptions-page/subscriptions-page.component';
+import { SubscriptionsCardListComponent } from './components/subscriber/subscriptions-card-list/subscriptions-card-list.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     HomePageComponentCreator,
     MenuComponent,
     CardListComponent,
+    SubscriptionsPageComponent,
+    SubscriptionsCardListComponent,
   ],
   imports: [
     BrowserModule,

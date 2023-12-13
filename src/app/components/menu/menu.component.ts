@@ -9,7 +9,12 @@ import { Router } from '@angular/router';
 export class MenuComponent {
   constructor(private router: Router) {}
 
-  logout() {
-    
+  toSubscriptions(): void {
+    this.router.navigate(['subscriber', 'subscriptions']);
+  }
+
+  async logout() {
+    await new Promise(f => setTimeout(f, 1000));
+    this.router.navigateByUrl("")
   }
 }
