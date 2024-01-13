@@ -1,9 +1,9 @@
 import {Component, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {endpoint} from "../endpoints";
-import {Creator} from "../../components/Entity/Creator";
-import {SubscriptionType} from "../../components/Entity/SubscriptionTypes";
-import {AuthServiceComponent} from "../auth-service/auth-service.component";
+import {endpoint} from "./endpoints";
+import {Creator} from "../components/Entity/Creator";
+import {SubscriptionType} from "../components/Entity/SubscriptionTypes";
+import {AuthServiceComponent} from "./auth-service.component";
 
 @Injectable({providedIn: 'root'})
 export class SubscriberServiceComponent {

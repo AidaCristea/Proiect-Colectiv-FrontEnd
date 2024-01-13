@@ -1,6 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Creator} from "../../Entity/Creator";
-import {SubscriberServiceComponent} from "../../../Services/subscriber-service/subscriber-service.component";
+import {SubscriberServiceComponent} from "../../../Services/subscriber-service.component";
 
 @Component({
   selector: 'app-card-list',

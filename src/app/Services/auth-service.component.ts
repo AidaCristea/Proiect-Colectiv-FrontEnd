@@ -1,10 +1,10 @@
 import {Component, Injectable} from '@angular/core';
-import {User} from "../../components/Entity/User";
+import {User} from "../components/Entity/User";
 import {BehaviorSubject, Observable, tap} from "rxjs";
 import {Router} from "@angular/router";
-import {endpoint} from "../endpoints";
+import {endpoint} from "./endpoints";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {Auth} from "../../components/Entity/Auth";
+import {Auth} from "../components/Entity/Auth";
 
 @Injectable({providedIn: 'root'})
 export class AuthServiceComponent {
