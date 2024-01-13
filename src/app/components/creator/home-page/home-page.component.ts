@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page-creator',
@@ -20,13 +21,15 @@ export class HomePageComponentCreator implements OnInit{
     },
   ];
 
+  constructor(private router: Router){
+
+  }
+
   ngOnInit(): void {
     //initialize name and image from user data
     this.name = 'Smiley'
     this.coverImage = 'https://i.scdn.co/image/ab67616100005174cf9b3d18027745226f6a5334' // this can stay as it is
     this.profileImage = 'https://i.scdn.co/image/ab67616100005174cf9b3d18027745226f6a5334'
-
-   //initialize posts
   }
 
   addCard() {

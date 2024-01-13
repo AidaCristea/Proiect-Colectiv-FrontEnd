@@ -1,43 +1,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram-like Feed with Navigation</title>
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <nav>
-        <a href=" ">
-            <i class="fa fa-home fa-lg"></i>
-            <span class="nav-text">Home</span>
-          </a>
-        
-          <a href=" ">
-            <i class="fa fa-user fa-lg"></i>
-            <span class="nav-text">Profile</span>
-          </a>
-          
-           <a href=" ">
-            <i class="fa fa-book fa-lg"></i>
-            <span class="nav-text">Revenue</span>
-          </a>
-          <a href=" ">
-           <i class="fa fa-cog fa-lg"></i>
-            <span class="nav-text">Settings</span>
-          </a>
-          <a href=" ">
-            <i class="fa fa-sign-out-alt fa-lg"></i>
-            <span class="nav-text">Log Out</span>
-          </a>
-    </nav>
-
+    <app-menu></app-menu>
     <header class="page-header">
+        <!-- Adjustments for header and images -->
         <img src="{{coverImage}}" alt="Cover Image" class="cover-image">
         <img src="{{profileImage}}" alt="Profile Image" class="profile-image">
         <div class="header-name">{{name}}</div>
     </header>
+
 
 <div class="content">
     <div class="new-card">

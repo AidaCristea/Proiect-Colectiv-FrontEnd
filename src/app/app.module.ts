@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SubscriptionsPageComponent } from './components/subscriber/subscriptions-page/subscriptions-page.component';
 import { SubscriptionsCardListComponent } from './components/subscriber/subscriptions-card-list/subscriptions-card-list.component';
+import { ProfileComponent } from './components/creator/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SubscriptionsCardListComponent } from './components/subscriber/subscrip
     CardListComponent,
     SubscriptionsPageComponent,
     SubscriptionsCardListComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
