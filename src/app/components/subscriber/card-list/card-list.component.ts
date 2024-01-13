@@ -43,6 +43,6 @@ export class CardListComponent implements OnInit{
   }
 
   navigateToCreatorHome() {
-    this.router.navigate(['/creator/home'], {queryParams: {subscribed: true}})
+    this.router.navigate(['/creator/home'], {queryParams: {subscribed: false}})
   }
 }

@@ -3,5 +3,5 @@ export const endpoint={
   SUBSCRIBER_HOME:"/fan/creatorsNotSubscribedTo",
   SUBSCRIPTION_TYPES:"/",
   LOGIN:"/user/login",
-  SUBSCRIBER_GET_CREATORS:"/seeCreators"
+  SUBSCRIBER_GET_CREATORS:"/fan/seeCreators"
 }

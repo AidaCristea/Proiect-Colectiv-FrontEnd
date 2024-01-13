@@ -19,7 +19,7 @@ export class HomePageComponentCreator implements OnInit {
   isCreator: boolean = false;
 
   constructor(private router: Router, private route: ActivatedRoute) {
-    this.subscribed = JSON.parse(this.router.url.split("=")[1]);
+    this.subscribed = JSON.parse(this.router.url.split("=")[1]) || false;
     this.isCreator = localStorage.getItem('userType') == 'CREATOR';
   }
 
