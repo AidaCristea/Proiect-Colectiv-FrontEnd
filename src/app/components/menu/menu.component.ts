@@ -9,6 +9,13 @@ import { Router } from '@angular/router';
 export class MenuComponent {
   constructor(private router: Router) {}
 
+  toggleMenu() {
+    const links = document.querySelector(".j-navbar-links");
+    const menu = document.querySelector(".j-hamburger");
+    menu?.classList.toggle("active");
+    links?.classList.toggle("compact");
+  }
+
   async logout() {
     this.router.navigateByUrl("");
   }

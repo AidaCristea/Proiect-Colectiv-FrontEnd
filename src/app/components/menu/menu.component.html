@@ -2,12 +2,19 @@
   <a class="navbar__logo" href="/home">
     <img src="../../../assets/logo.png" alt="Site Logo">
   </a>
-  <ul class="navbar__links">
+
+  <div class="navbar__hamburger j-hamburger" (click)="toggleMenu()">
+    <div class="navbar__hamburger-line"></div>
+    <div class="navbar__hamburger-line"></div>
+    <div class="navbar__hamburger-line"></div>
+  </div>
+
+  <ul class="navbar__links j-navbar-links">
     <li class="navbar__link">
       <a data-name="home" href="/subscriber/home">Home</a>
     </li>
     <li class="navbar__link">
-      <a data-name="Subscriptions" (click)="toSubscriptions()">Subscriptions</a>
+      <a data-name="Subscriptions">Subscriptions</a>
     </li>
     <li class="navbar__link">
       <a data-name="Feed">Feed</a>
