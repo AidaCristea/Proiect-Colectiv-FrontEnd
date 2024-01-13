@@ -1,29 +1,46 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import {User} from "../Entity/User";
+import {AuthServiceComponent} from "../../Services/auth-service/auth-service.component";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   username: string = ''
   password: string = ''
   invalidCredentials: boolean = false
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthServiceComponent, private router: Router) {}
 
-  navigateToRegister() {
-    this.router.navigateByUrl("register")
+  navigateToRegister(): void {
+    this.router.navigateByUrl('register');
   }
 
-  login(){
-    if(this.username == "randomUser1" && this.password == "pass"){
-      this.router.navigateByUrl("subscriber/home")
-    } else if (this.username == "smiley" && this.password == "pass"){
-      this.router.navigateByUrl("creator/home")
-    } else {
-      this.invalidCredentials = true
+  login(): void{
+    console.log("LOGIN TRY")
+    const object = {
+      email: this.username,
+      password: this.password
     }
+    this.authService.login(object).subscribe(
+      response => {
+        console.log(response)
+        const userType = response.userType
+          this.router.navigateByUrl(userType === 'FAN' ? 'subscriber/home' : 'creator/home');
+         this.authService.handleLoginResponse(response);
+         this.invalidCredentials=false;
+        },
+      error => {
+        console.error('Error during login:', error);
+        this.invalidCredentials=true;
+      }
+    );  }
+
+  ngOnInit(): void {
+    this.authService.logout();
   }
+
 }

@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SubscriptionsPageComponent } from './components/subscriber/subscriptions-page/subscriptions-page.component';
 import { SubscriptionsCardListComponent } from './components/subscriber/subscriptions-card-list/subscriptions-card-list.component';
+import {provideHttpClient} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -26,15 +28,16 @@ import { SubscriptionsCardListComponent } from './components/subscriber/subscrip
     CardListComponent,
     SubscriptionsPageComponent,
     SubscriptionsCardListComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
