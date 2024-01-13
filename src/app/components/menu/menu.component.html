@@ -1,20 +1,19 @@
-<nav>
-  <ul id="nav">
-    <li class="nav-link">
-      <h1 data-name="home" routerLink="/subscriber/home">Home</h1>
-      <div class="underline"></div>
+<nav class="navbar">
+  <a class="navbar__logo" href="/home">
+    <img src="../../../assets/logo.png" alt="Site Logo">
+  </a>
+  <ul class="navbar__links">
+    <li class="navbar__link">
+      <a data-name="home" href="/subscriber/home">Home</a>
     </li>
-    <li class="nav-link">
-      <h1 data-name="Subscriptions" (click)="toSubscriptions()">Subscriptions</h1>
-      <div class="underline"></div>
+    <li class="navbar__link">
+      <a data-name="Subscriptions" (click)="toSubscriptions()">Subscriptions</a>
     </li>
-    <li class="nav-link">
-      <h1 data-name="Feed">Feed</h1>
-      <div class="underline"></div>
+    <li class="navbar__link">
+      <a data-name="Feed">Feed</a>
     </li>
-    <li class="nav-link">
-      <h1 data-name="Logout" (click)="logout()">Logout</h1>
-      <div class="underline"></div>
+    <li class="navbar__link">
+      <a data-name="Logout" (click)="logout()">Logout</a>
     </li>
   </ul>
 </nav>
