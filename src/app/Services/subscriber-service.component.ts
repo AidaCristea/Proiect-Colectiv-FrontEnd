@@ -17,5 +17,7 @@ export class SubscriberServiceComponent {
   getSubscriptionsTypes(creatorId:number){
     return this.http.get<SubscriptionType[]>(endpoint.BASE_URL+endpoint.SUBSCRIPTION_TYPES+"/"+creatorId);
   }
-
+  getSubscribedCreators(){
+    return this.http.get<Creator[]>(endpoint.BASE_URL+endpoint.SUBSCRIBER_GET_CREATORS+"/"+this.authService.currentUserId());
+  }
 }
