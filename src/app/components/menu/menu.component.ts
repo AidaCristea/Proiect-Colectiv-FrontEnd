@@ -14,7 +14,6 @@ export class MenuComponent {
   }
 
   async logout() {
-    await new Promise(f => setTimeout(f, 1000));
-    this.router.navigateByUrl("")
+    this.router.navigateByUrl("");
   }
 }

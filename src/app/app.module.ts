@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SubscriptionsPageComponent } from './components/subscriber/subscriptions-page/subscriptions-page.component';
 import { SubscriptionsCardListComponent } from './components/subscriber/subscriptions-card-list/subscriptions-card-list.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -27,13 +28,14 @@ import { SubscriptionsCardListComponent } from './components/subscriber/subscrip
     SubscriptionsPageComponent,
     SubscriptionsCardListComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatDialogModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+        NgOptimizedImage
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
