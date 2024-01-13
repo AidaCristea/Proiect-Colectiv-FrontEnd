@@ -5,7 +5,7 @@ import {SubscriberServiceComponent} from "../../../Services/subscriber-service/s
 @Component({
   selector: 'app-card-list',
   templateUrl: './card-list.component.html',
-  styleUrls: ['./card-list.component.css']
+  styleUrls: ['./card-list.component.scss']
 })
 export class CardListComponent implements OnInit{
   cards: any[] = [];

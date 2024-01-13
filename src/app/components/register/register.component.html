@@ -1,25 +1,30 @@
-<div class="register-container">
-    <div class="register-box">
-      <img src="../../../assets/logo.png" alt="Logo">
-      <form>
-        <div class="form-group">
-          <input type="text" id="username" name="username" placeholder="Username" required>
-        </div>
-        <div class="form-group">
-          <input type="email" id="email" name="email" placeholder="Email" required>
-        </div>
-        <div class="form-group">
-          <input type="password" id="password" name="password" placeholder="Password" required>
-        </div>
-        <div class="form-group">
-          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
-        </div>
-        <div class="form-group">
-            <input type="checkbox" id="creatorCheckbox" name="creatorCheckbox"><label>I am a creator</label>
-        </div>
-        <button type="submit">Register</button>
-      </form>
-      <p class="login-link">Already have an account? <a (click)="navigateToLogin()">Login here</a></p>
-    </div>
+<div class="register">
+  <div class="register__container flex-center-all">
+    <img src="../../../assets/logo.png">
+    <h1 class="register__title">Thanks for joining us!</h1>
+    <p class="register__subtitle">Create an account for the hottest app of 2024</p>
+    <form>
+      <div class="form-group">
+        <input class="input" type="text" id="username" name="username" placeholder="Username" required>
+      </div>
+      <div class="form-group">
+        <input class="input" type="email" id="email" name="email" placeholder="Email" required>
+      </div>
+      <div class="form-group">
+        <input class="input" type="password" id="password" name="password" placeholder="Password" required>
+      </div>
+      <div class="form-group">
+        <input class="input" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+      </div>
+      <div class="form-group--horizontal">
+        <input class="input" type="checkbox" id="creatorCheckbox" name="creatorCheckbox"><label class="register__label">I am a creator</label>
+      </div>
+      <button class="primary-button" type="submit">Register</button>
+    </form>
+    <p class="register__register-link">Already have an account? <a (click)="navigateToLogin()">Sign up here</a></p>
   </div>
-  
+  <div class="register__hero">
+    <img class="register__hero-image" id="j-hero-image" src="../../../assets/hero-img.webp"/>
+  </div>
+</div>
+

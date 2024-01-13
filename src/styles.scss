@@ -1,0 +1,215 @@
+:root {
+  --primary: #f98dc9;
+  --primary-hover: #f765b8;
+  --secondary: #85c3c4;
+  --secondary-hover: #517677;
+
+  --white: #fff;
+  --black: #000;
+
+  --gray-100: #f7fafc;
+  --gray-300: #e2e8f0;
+  --gray-500: #a0aec0;
+  --gray-700: #4a5568;
+  --gray-900: #1a202c;
+
+  --border-radus: 6px;
+  --border: 1px solid var(--gray-300);
+  --border-hover: 1px solid var(--gray-500);
+
+  --box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  --box-shadow-hover: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+  --transition: all 0.2s ease-in-out;
+
+}
+
+/* utility classes */
+@mixin flex-center-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-center-all {
+  @include flex-center-all;
+}
+
+.input {
+  min-width: 0;
+  padding: 16px;
+  margin-bottom: 8px;
+  border-radius: var(--border-radus);
+  border: var(--border);
+  transition: var(--transition);
+  font-size: 1rem;
+
+  &:hover, &:focus {
+    border: var(--border-hover);
+  }
+
+  &::placeholder {
+    color: var(--gray-500);
+  }
+}
+
+.primary-button {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--border-radus);
+  transition: var(--transition);
+  background: var(--primary);
+  border: none;
+  font-size: 1rem;
+  color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    background: var(--primary-hover);
+    border: none;
+  }
+}
+
+.secondary-button {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--border-radus);
+  transition: var(--transition);
+  background: var(--secondary);
+  border: none;
+  font-size: 1rem;
+  color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    background: var(--secondary-hover);
+    border: none;
+  }
+}
+
+form, .form-group {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &--horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: baseline;
+  }
+}
+
+a, .link {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+
+  &:hover, &:focus {
+    color: var(--primary-hover);
+    text-decoration: underline;
+  }
+}
+
+.card {
+  width: 100%;
+  min-width: 0;
+  border-radius: var(--border-radus);
+  transition: var(--transition);
+  background: var(--white);
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  overflow: clip;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+
+  &__image {
+    background-size: cover;
+    height: 200px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.255);
+  }
+
+  &__content {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    p {
+      color: var(--gray-700);
+      line-height: 1.2;
+      font-size: 14px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  &:hover, &:focus {
+    border: var(--border-hover);
+    box-shadow: var(--box-shadow-hover);
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+div {
+  box-sizing: border-box;
+}

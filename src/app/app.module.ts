@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatCardModule} from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SubscriptionsPageComponent } from './components/subscriber/subscriptions-page/subscriptions-page.component';
 import { SubscriptionsCardListComponent } from './components/subscriber/subscriptions-card-list/subscriptions-card-list.component';
+import { ProfileComponent } from './components/creator/profile/profile.component';
+import {NgOptimizedImage} from "@angular/common";
 import {provideHttpClient} from '@angular/common/http';
 
 
@@ -28,7 +30,7 @@ import {provideHttpClient} from '@angular/common/http';
     CardListComponent,
     SubscriptionsPageComponent,
     SubscriptionsCardListComponent,
-
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,8 @@ import {provideHttpClient} from '@angular/common/http';
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatCardModule,
+    NgOptimizedImage
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

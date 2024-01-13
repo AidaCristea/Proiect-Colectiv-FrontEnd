@@ -6,7 +6,7 @@ import {AuthServiceComponent} from "../../Services/auth-service/auth-service.com
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
   username: string = ''
@@ -42,5 +42,4 @@ export class LoginComponent implements OnInit{
   ngOnInit(): void {
     this.authService.logout();
   }
-
 }

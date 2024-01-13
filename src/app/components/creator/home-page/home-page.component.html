@@ -1,1 +1,31 @@
-<p>home-page works for creator!</p>
+<app-menu></app-menu>
+
+
+<div class="creator-profile">
+  <header class="page-header">
+    <img src="{{coverImage}}" alt="Cover Image" class="cover-image">
+    <img src="{{profileImage}}" alt="Profile Image" class="profile-image">
+    <h1 class="header-name">{{name}}</h1>
+  </header>
+
+
+  <div class="creator-profile__container">
+    <div class="creator-profile__add-section card">
+      <h2>Add new post</h2>
+      <input type="text" class="input" placeholder="Title" [(ngModel)]="newCardTitle">
+      <textarea class="input" placeholder="What's on your mind?" [(ngModel)]="newCardText"></textarea>
+      <button class="primary-button" (click)="addCard()">Post</button>
+    </div>
+
+    <div class="creator-profile__posts">
+      <h2>All Your Posts</h2>
+      <div class="card" *ngFor="let card of cards">
+        <div class="card__image" [style.backgroundImage]="'url(' + card.imageUrl + ')'"></div>
+        <div class="card__content">
+          <h2>{{card.title}}</h2>
+          <p>{{ card.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
