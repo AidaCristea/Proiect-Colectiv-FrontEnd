@@ -9,10 +9,6 @@ import { Router } from '@angular/router';
 export class MenuComponent {
   constructor(private router: Router) {}
 
-  toSubscriptions(): void {
-    this.router.navigate(['subscriber', 'subscriptions']);
-  }
-
   async logout() {
     this.router.navigateByUrl("");
   }
