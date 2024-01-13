@@ -1,4 +1,6 @@
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
 
 @Component({
   selector: 'app-card-list',
@@ -8,7 +10,7 @@ import { Component, HostListener } from '@angular/core';
 export class CardListComponent {
   cards: any[] = [];
 
-  constructor() {
+  constructor(private router: Router) {
     this.generateCards(1);
   }
 
@@ -77,5 +79,9 @@ export class CardListComponent {
 
   closeSubscriptionPopout(card: any): void {
     card.showPopout = false;
+  }
+
+  navigateToCreatorHome() {
+    this.router.navigate(['/creator/home'], {queryParams: {subscribed: true}})
   }
 }

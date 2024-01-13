@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-home-page-creator',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponentCreator implements OnInit{
+export class HomePageComponentCreator implements OnInit {
   newCardTitle: string = ''; // To store the title
   newCardImage: File | null = null; // To store the selected image file
   newCardText: string = ''; // To store the text content
@@ -14,9 +15,12 @@ export class HomePageComponentCreator implements OnInit{
   coverImage = '';
   profileImage = '';
   cards: any = [];
+  subscribed: boolean;
+  isCreator: boolean = false;
 
-  constructor(private router: Router){
-
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.subscribed = JSON.parse(this.router.url.split("=")[1]);
+    this.isCreator = localStorage.getItem('userType') == 'CREATOR';
   }
 
   ngOnInit(): void {
