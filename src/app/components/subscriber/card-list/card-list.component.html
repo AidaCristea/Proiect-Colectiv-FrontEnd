@@ -1,16 +1,31 @@
 <div class="card-container">
-    <ng-container *ngFor="let card of cards">
-      <div class="container">
-        <div class="wrapper">
-          <div class="banner-image" [style.backgroundImage]="'url(' + card.bannerImage + ')'"></div>
-          <h1>{{ card.title }}</h1>
-          <p>{{card.description}}</p>
-        </div>
-        <div class="button-wrapper"> 
-          <button class="btn outline">DETAILS</button>
-          <button class="btn fill">SUBSCRIBE</button>
-        </div>
+  <ng-container *ngFor="let card of cards">
+    <div class="container">
+      <div class="wrapper">
+        <div class="banner-image" [style.backgroundImage]="'url(' + card.bannerImage + ')'"></div>
+        <h1>{{ card.title }}</h1>
+        <p>{{ card.description }}</p>
       </div>
-    </ng-container>
-  </div>
-  
+      <div class="button-wrapper">
+        <button class="btn outline">DETAILS</button>
+        <button class="btn fill" (click)="openSubscriptionPopout(card)">SUBSCRIBE</button>
+      </div>
+    </div>
+
+    <div *ngIf="card.showPopout" class="subscription-popout">
+      <div class="popout-title">Choose a Subscription for {{ card.title }}</div>
+      <div class="subscription-columns">
+        <ng-container *ngFor="let subscription of card.subscriptions; let last = last">
+          <div class="subscription-column">
+            <div class="subscription-type">{{ subscription.type }}</div>
+            <div class="subscription-description">{{ subscription.description }}</div>
+            <button class="pay-btn">Subscribe for {{subscription.price}}</button>
+          </div>
+          <div *ngIf="!last" class="vertical-bar"></div>
+        </ng-container>
+      </div>
+      <button class="btn close" (click)="closeSubscriptionPopout(card)">CLOSE</button>
+    </div>
+
+  </ng-container>
+</div>
