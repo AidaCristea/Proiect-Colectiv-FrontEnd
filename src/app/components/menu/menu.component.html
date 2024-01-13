@@ -1,15 +1,23 @@
 <nav>
   <ul id="nav">
     <li class="nav-link">
-      <h1 data-name="home" routerLink="/subscriber/home">Home</h1>
+      <h1 data-name="home" [routerLink]="isCreator() ? '/creator/home' : '/subscriber/home'">Home</h1>
+      <div class="underline"></div>
+    </li>    
+    <li class="nav-link">
+      <h1 data-name="Subscriptions" *ngIf="!isCreator()">Subscriptions</h1>
       <div class="underline"></div>
     </li>
     <li class="nav-link">
-      <h1 data-name="Subscriptions">Subscriptions</h1>
+      <h1 data-name="Feed" *ngIf="!isCreator()">Feed</h1>
       <div class="underline"></div>
     </li>
     <li class="nav-link">
-      <h1 data-name="Feed">Feed</h1>
+      <h1 data-name="Subscriptions" *ngIf="isCreator()">Subscribers</h1>
+      <div class="underline"></div>
+    </li>
+    <li class="nav-link">
+      <h1 data-name="Feed" *ngIf="isCreator()">Profile</h1>
       <div class="underline"></div>
     </li>
     <li class="nav-link">
