@@ -1,31 +1,36 @@
 <div class="card-container">
+  <h1>All Our Creators</h1>
+
   <ng-container *ngFor="let card of cards">
-    <div class="container">
-      <div class="wrapper">
-        <div class="banner-image" [style.backgroundImage]="'url(' + card.bannerImage + ')'"></div>
-        <h1>{{ card.title }}</h1>
+    <div class="card">
+      <div class="card__image" [style.backgroundImage]="'url(' + card.bannerImage + ')'"></div>
+      <div class="card__content">
+        <h2>{{ card.title }}</h2>
         <p>{{ card.description }}</p>
-      </div>
-      <div class="button-wrapper">
-        <button class="btn outline">DETAILS</button>
-        <button class="btn fill" (click)="openSubscriptionPopout(card)">SUBSCRIBE</button>
+        <div class="card__buttons">
+          <button class="secondary-button">Details</button>
+          <button class="primary-button" (click)="openSubscriptionPopout(card)">Subscribe</button>
+        </div>
       </div>
     </div>
 
-    <div *ngIf="card.showPopout" class="subscription-popout">
-      <div class="popout-title">Choose a Subscription for {{ card.title }}</div>
-      <div class="subscription-columns">
+    <div *ngIf="card.showPopout" class="subscription-popout card">
+      <div class="subscription-popout__close" (click)="closeSubscriptionPopout(card)">✖</div>
+      <h2 class="subscription-popout__title">Choose a Subscription for {{ card.title }}!</h2>
+      <div class="subscription-popout__options">
         <ng-container *ngFor="let subscription of card.subscriptions; let last = last">
-          <div class="subscription-column">
-            <div class="subscription-type">{{ subscription.type }}</div>
-            <div class="subscription-description">{{ subscription.description }}</div>
-            <button class="pay-btn">Subscribe for {{subscription.price}}</button>
+          <div class="subscription-popout__option card">
+            <h3 class="subscription-type">{{ subscription.type }}</h3>
+            <p class="subscription-description">{{ subscription.description }}</p>
+
+            <h2 class="subscription-popout__price">{{subscription.price}}</h2>
           </div>
-          <div *ngIf="!last" class="vertical-bar"></div>
         </ng-container>
       </div>
-      <button class="btn close" (click)="closeSubscriptionPopout(card)">CLOSE</button>
     </div>
+    <div *ngIf="card.showPopout" class="overlay"></div>
 
   </ng-container>
 </div>
+
+

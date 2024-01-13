@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SubscriptionsPageComponent } from './components/subscriber/subscriptions-page/subscriptions-page.component';
 import { SubscriptionsCardListComponent } from './components/subscriber/subscriptions-card-list/subscriptions-card-list.component';
 import { ProfileComponent } from './components/creator/profile/profile.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProfileComponent } from './components/creator/profile/profile.component
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]

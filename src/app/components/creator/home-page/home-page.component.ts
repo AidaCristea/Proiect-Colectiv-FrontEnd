@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home-page-creator',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponentCreator implements OnInit{
   newCardTitle: string = ''; // To store the title
@@ -13,13 +13,7 @@ export class HomePageComponentCreator implements OnInit{
   name = '';
   coverImage = '';
   profileImage = '';
-  cards = [
-    {
-      title: 'Card Title',
-      description: 'Card description...',
-      imageUrl: 'https://i.scdn.co/image/ab67616100005174cf9b3d18027745226f6a5334'
-    },
-  ];
+  cards: any = [];
 
   constructor(private router: Router){
 
