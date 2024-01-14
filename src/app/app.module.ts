@@ -17,6 +17,7 @@ import { SubscriptionsCardListComponent } from './components/subscriber/subscrip
 import { ProfileComponent } from './components/creator/profile/profile.component';
 import {NgOptimizedImage} from "@angular/common";
 import {provideHttpClient} from '@angular/common/http';
+import {MatRadioModule} from "@angular/material/radio";
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {provideHttpClient} from '@angular/common/http';
     BrowserAnimationsModule,
     MatDialogModule,
     MatCardModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatRadioModule,
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

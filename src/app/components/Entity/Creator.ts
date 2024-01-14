@@ -6,4 +6,5 @@ export interface Creator{
   priceUltimate: number;
   priceLite: number;
   pricePro: number;
+  photoURL:string;
 }

@@ -3,5 +3,8 @@ export const endpoint={
   SUBSCRIBER_HOME:"/fan/creatorsNotSubscribedTo",
   SUBSCRIPTION_TYPES:"/",
   LOGIN:"/user/login",
-  SUBSCRIBER_GET_CREATORS:"/fan/seeCreators"
+  SIGNUP:"/user/signup",
+  SUBSCRIBER_GET_CREATORS:"/fan/seeCreators",
+  CREATE_FAN:"/fan",
+  ADD_CREATOR:"/creator"
 }

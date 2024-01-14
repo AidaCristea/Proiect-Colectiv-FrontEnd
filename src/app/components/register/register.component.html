@@ -5,21 +5,66 @@
     <p class="register__subtitle">Create an account for the hottest app of 2024</p>
     <form>
       <div class="form-group">
-        <input class="input" type="text" id="username" name="username" placeholder="Username" required>
+        <input class="input" type="email" id="email" name="email" placeholder="Email" required [(ngModel)]="email">
       </div>
       <div class="form-group">
-        <input class="input" type="email" id="email" name="email" placeholder="Email" required>
+        <input class="input" type="password" id="password" name="password" placeholder="Password" required
+               [(ngModel)]="password">
       </div>
       <div class="form-group">
-        <input class="input" type="password" id="password" name="password" placeholder="Password" required>
+        <input class="input" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
+               required [(ngModel)]="confirmPassword">
+        <div *ngIf="passwordMismatch" class="error-message">Passwords do not match!</div>
       </div>
       <div class="form-group">
-        <input class="input" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+        <input class="input" type="photoURL" id="photoURL" name="photoURL" placeholder="Profile photo URL" required
+               [(ngModel)]="photoURL">
       </div>
-      <div class="form-group--horizontal">
-        <input class="input" type="checkbox" id="creatorCheckbox" name="creatorCheckbox"><label class="register__label">I am a creator</label>
+      <section class="radio_buttons">
+        <label>Select an account type:</label>
+        <mat-radio-group [(ngModel)]="isCreator" name="accountType">
+          <label>
+            <input class="radio-input" type="radio" value="false" (change)="onIsCreatorChange(false)" [checked]="!isCreator">
+            <span class="radio-category">Fan</span>
+          </label>
+          <label>
+            <input class="radio-input" type="radio" value="true" (change)="onIsCreatorChange(true)" [checked]="isCreator">
+            <span>Content Creator</span>
+          </label>
+        </mat-radio-group>
+      </section>
+
+
+      <div *ngIf="isCreator">
+        <div class="form-group">
+          <textarea class="input" id="bio" name="bio" placeholder="Enter your bio" [(ngModel)]="bio"></textarea>
+        </div>
+        <div class="form-group">
+          <input class="input" type="text" id="priceUltimate" name="priceUltimate"
+                 placeholder="Enter price for Ultimate" [(ngModel)]="priceUltimate">
+        </div>
+        <div class="form-group">
+          <input class="input" type="text" id="priceLite" name="priceLite" placeholder="Enter price for Lite"
+                 [(ngModel)]="priceLite">
+        </div>
+        <div class="form-group">
+          <input class="input" type="text" id="pricePro" name="pricePro" placeholder="Enter price for Pro"
+                 [(ngModel)]="pricePro">
+        </div>
       </div>
-      <button class="primary-button" type="submit">Register</button>
+
+      <div *ngIf="!isCreator">
+        <div class="preferences-container">
+          <div>Select your preferences:</div>
+          <div class="form-group columns">
+            <label *ngFor="let style of musicStyles" class="column">
+              <input type="checkbox" name="musicStyle" [value]="style"
+                     [(ngModel)]="selectedMusicStyles[style]"> {{ style }}
+            </label>
+          </div>
+        </div>
+      </div>
+      <button class="primary-button" type="submit" (click)="register()">Register</button>
     </form>
     <p class="register__register-link">Already have an account? <a (click)="navigateToLogin()">Sign up here</a></p>
   </div>
