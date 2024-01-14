@@ -8,7 +8,7 @@
         <h2>{{ card.title }}</h2>
         <p>{{ card.description }}</p>
         <div class="card__buttons">
-          <button class="secondary-button">Details</button>
+          <button class="secondary-button" (click)="navigateToCreatorHome()">See Profile</button>
           <button class="primary-button" (click)="openSubscriptionPopout(card)">Subscribe</button>
         </div>
       </div>
@@ -22,7 +22,6 @@
           <div class="subscription-popout__option card">
             <h3 class="subscription-type">{{ subscription.type }}</h3>
             <p class="subscription-description">{{ subscription.description }}</p>
-
             <h2 class="subscription-popout__price">{{subscription.price}}</h2>
           </div>
         </ng-container>

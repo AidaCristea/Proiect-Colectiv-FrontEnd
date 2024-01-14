@@ -16,6 +16,8 @@ import { SubscriptionsPageComponent } from './components/subscriber/subscription
 import { SubscriptionsCardListComponent } from './components/subscriber/subscriptions-card-list/subscriptions-card-list.component';
 import { ProfileComponent } from './components/creator/profile/profile.component';
 import {NgOptimizedImage} from "@angular/common";
+import {provideHttpClient} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import {NgOptimizedImage} from "@angular/common";
     MatCardModule,
     NgOptimizedImage
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

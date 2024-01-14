@@ -1,1 +1,18 @@
-<p>subscriptions-card-list works!</p>
+<div class="card-container">
+  <h1>Your Creators</h1>
+
+  <ng-container *ngFor="let card of cards">
+    <div class="card">
+      <div class="card__image" [style.backgroundImage]="'url(' + card.bannerImage + ')'"></div>
+      <div class="card__content">
+        <h2>{{ card.title }}</h2>
+        <p>{{ card.description }}</p>
+        <div class="card__buttons">
+          <button class="secondary-button" (click)="navigateToCreatorHome()">See Posts</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+
