@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit{
   userRole = '';
   ngOnInit(): void {
-    const currentUser = localStorage.getItem("currentUser");
+    const currentUser = localStorage.getItem("userType");
     this.userRole = currentUser !== null ? currentUser : "";
+    console.log("MENU INIT")
+    console.log(currentUser)
   }
 
   constructor(private router: Router) {}
