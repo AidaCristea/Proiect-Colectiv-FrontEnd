@@ -18,6 +18,7 @@ export class HomePageComponentCreator implements OnInit {
   cards: any = [];
   subscribed: boolean;
   isCreator: boolean = false;
+  selectedOption: string = '';
 
   constructor(private router: Router, private route: ActivatedRoute, private creatorService: CreatorServiceComponent) {
     this.subscribed = JSON.parse(this.router.url.split("=")[1]) || false;
@@ -36,12 +37,21 @@ export class HomePageComponentCreator implements OnInit {
   }
 
   addCard() {
+    const content = this.newCardTitle + " ! " + this.newCardText + " ! " + 'https://i.scdn.co/image/ab67616100005174cf9b3d18027745226f6a5334'
     const newCard = {
-      title: this.newCardTitle,
-      description: this.newCardText,
-      imageUrl: 'https://i.scdn.co/image/ab67616100005174cf9b3d18027745226f6a5334' // Set a default or new image URL
+      content: content,
+      subscriptionTypeId: this.selectedOption // Set a default or new image URL
     };
     this.cards.push(newCard);
+    console.log(this.selectedOption)
+    this.addPost(newCard);
+  }
+
+  addPost(post: any){
+    console.log(post)
+    this.creatorService.addPost(post).subscribe(
+      result=>console.log(result)
+    )
   }
 
   getPosts(){
@@ -49,5 +59,10 @@ export class HomePageComponentCreator implements OnInit {
       console.log(data)
       this.cards = data
     })
+  }
+
+  getBackgroundImage(card: any): string {
+    const url = card.content.split("!")[2];
+    return 'url(' +  url  + ')';
   }
 }
