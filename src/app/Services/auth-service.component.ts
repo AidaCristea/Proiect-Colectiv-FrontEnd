@@ -34,7 +34,7 @@ export class AuthServiceComponent {
     return storedUser ? JSON.parse(storedUser) : null;
   }
 
-  public handleLoginResponse(userFromServer: any): void {
+  public handleSessionStorage(userFromServer: any): void {
     if (userFromServer) {
       localStorage.setItem('id', userFromServer.userId.toString());
       localStorage.setItem('userType', userFromServer.userType.toString());
@@ -42,4 +42,10 @@ export class AuthServiceComponent {
       this.currentUserSubject.next(null);
     }
   }
+
+  registerUser(user: any): Observable<any> {
+    return this.http.post<any>(`${endpoint.BASE_URL}${endpoint.SIGNUP}`, user);
+  }
+
 }
+
