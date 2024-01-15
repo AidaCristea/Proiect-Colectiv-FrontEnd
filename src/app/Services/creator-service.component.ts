@@ -11,4 +11,8 @@ export class CreatorServiceComponent {
   addCreator(creator: Creator): Observable<any> {
     return this.http.post(`${endpoint.BASE_URL}${endpoint.ADD_CREATOR}`, creator);
   }
+
+  getPosts(): Observable<any>{
+    return this.http.get(`${endpoint.BASE_URL}${endpoint.POST}`);
+  }
 }

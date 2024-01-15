@@ -20,7 +20,10 @@ export class CardListComponent implements OnInit{
   }
 
   getHomePageCreators():void{
-    this.subscriberService.getHomePageCreators().subscribe(data=>this.cards=data)
+    this.subscriberService.getHomePageCreators().subscribe(data=>{
+      this.cards=data
+      console.log(data)
+    })
   }
 
   @HostListener('window:scroll', ['$event'])

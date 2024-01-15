@@ -11,8 +11,6 @@ export class MenuComponent implements OnInit{
   ngOnInit(): void {
     const currentUser = localStorage.getItem("userType");
     this.userRole = currentUser !== null ? currentUser : "";
-    console.log("MENU INIT")
-    console.log(currentUser)
   }
 
   constructor(private router: Router) {}
@@ -26,6 +24,7 @@ export class MenuComponent implements OnInit{
 
   async logout() {
     this.router.navigateByUrl("");
+    localStorage.clear();
   }
 
   isCreator(): boolean {

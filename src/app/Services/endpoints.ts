@@ -6,5 +6,6 @@ export const endpoint={
   SIGNUP:"/user/signup",
   SUBSCRIBER_GET_CREATORS:"/fan/seeCreators",
   CREATE_FAN:"/fan",
-  ADD_CREATOR:"/creator"
+  ADD_CREATOR:"/creator",
+  POST:"/post"
 }

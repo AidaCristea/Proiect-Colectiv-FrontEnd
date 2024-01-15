@@ -17,9 +17,10 @@ export class AuthServiceComponent {
   public currentUserId(): any {
     return localStorage.getItem("id");
   }
-    login(body: any): Observable<any>{
-      return this.http.post<any>(`${endpoint.BASE_URL}${endpoint.LOGIN}`, body)
-    }
+  
+  login(body: any): Observable<any>{
+    return this.http.post<any>(`${endpoint.BASE_URL}${endpoint.LOGIN}`, body)
+  }
 
 
   logout(): void {
@@ -36,8 +37,12 @@ export class AuthServiceComponent {
 
   public handleSessionStorage(userFromServer: any): void {
     if (userFromServer) {
+      console.log(userFromServer)
       localStorage.setItem('id', userFromServer.userId.toString());
       localStorage.setItem('userType', userFromServer.userType.toString());
+      localStorage.setItem('username', userFromServer.email.toString());
+      localStorage.setItem('photoURL', userFromServer.photoURL.toString());
+
     } else {
       this.currentUserSubject.next(null);
     }
