@@ -12,7 +12,7 @@ export class HomePageComponentCreator implements OnInit {
   newCardTitle: string = ''; // To store the title
   newCardImage: File | null = null; // To store the selected image file
   newCardText: string = ''; // To store the text content
-  name = '';
+  name: any = '';
   coverImage = '';
   profileImage = '';
   cards: any = [];
@@ -37,10 +37,10 @@ export class HomePageComponentCreator implements OnInit {
   }
 
   addCard() {
-    const content = this.newCardTitle + " ! " + this.newCardText + " ! " + 'https://i.scdn.co/image/ab67616100005174cf9b3d18027745226f6a5334'
+    const content = this.newCardTitle + " ! " + this.newCardText + " ! " + 'https://i.scdn.co/image/ab67616100005174cf9b3d18027745226f6a5334' + " ! " + this.name
     const newCard = {
       content: content,
-      subscriptionTypeId: this.selectedOption // Set a default or new image URL
+      subscriptionTypeId: this.selectedOption
     };
     this.cards.push(newCard);
     console.log(this.selectedOption)
@@ -48,16 +48,23 @@ export class HomePageComponentCreator implements OnInit {
   }
 
   addPost(post: any){
-    console.log(post)
+    console.log(post);
     this.creatorService.addPost(post).subscribe(
-      result=>console.log(result)
-    )
+      result => console.log(result)
+    );
   }
 
   getPosts(){
     this.creatorService.getPosts().subscribe(data=>{
-      console.log(data)
-      this.cards = data
+      console.log(data);
+      console.log(this.name)
+      let posts = [];
+      for(let post of data){
+        if(post.content.includes(this.name))
+          posts.push(post);
+      }
+      this.cards = posts;
+      console.log(this.cards)
     })
   }
 

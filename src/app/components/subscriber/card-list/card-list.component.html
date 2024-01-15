@@ -3,7 +3,7 @@
 
   <ng-container *ngFor="let card of cards">
     <div class="card">
-      <div class="card__image" [style.backgroundImage]="'url(' + card.bannerImage + ')'"></div>
+      <div class="card__image" [style.backgroundImage]="getBackgroundImage(card)"></div>
       <div class="card__content">
         <h2>{{ card.bio.split("!")[0] }}</h2>
         <p>{{ card.bio.split("!")[1] }}</p>
@@ -16,9 +16,9 @@
 
     <div *ngIf="card.showPopout" class="subscription-popout card">
       <div class="subscription-popout__close" (click)="closeSubscriptionPopout(card)">✖</div>
-      <h2 class="subscription-popout__title">Choose a Subscription for {{ card.title }}!</h2>
+      <h2 class="subscription-popout__title">Choose a Subscription for {{ card.bio.split("!")[0] }}!</h2>
       <div class="subscription-popout__options">
-        <ng-container *ngFor="let subscription of card.subscriptions; let last = last">
+        <ng-container *ngFor="let subscription of subscriptions; let last = last">
           <div class="subscription-popout__option card">
             <h3 class="subscription-type">{{ subscription.type }}</h3>
             <p class="subscription-description">{{ subscription.description }}</p>
