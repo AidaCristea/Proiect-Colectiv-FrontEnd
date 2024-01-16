@@ -1,6 +1,7 @@
 import {Component, HostListener} from '@angular/core';
 import {Router} from "@angular/router";
 import {SubscriberServiceComponent} from "../../../Services/subscriber-service.component";
+import { FanService } from 'src/app/Services/fan-service';
 
 @Component({
   selector: 'app-subscriptions-card-list',
@@ -10,7 +11,7 @@ import {SubscriberServiceComponent} from "../../../Services/subscriber-service.c
 export class SubscriptionsCardListComponent {
   cards: any[] = [];
 
-  constructor(private router: Router, private subscriberService:SubscriberServiceComponent) {
+  constructor(private router: Router, private subscriberService:SubscriberServiceComponent, private fanService:FanService) {
   }
 
   ngOnInit(): void {
@@ -18,7 +19,16 @@ export class SubscriptionsCardListComponent {
   }
 
   getHomePageCreators():void{
-    this.subscriberService.getSubscribedCreators().subscribe(data=>this.cards=data)
+    let fanId = Number(localStorage.getItem("fanId"))
+    this.fanService.getCreatorsForFan(fanId).subscribe(data=>{
+      this.cards=data
+      console.log(this.cards)
+    })
+  }
+
+  getBackgroundImage(card: any): string {
+    const url = card.photoURL;
+    return 'url(' +  url  + ')';
   }
 
   @HostListener('window:scroll', ['$event'])
