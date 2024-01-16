@@ -36,13 +36,37 @@
     </div>
 
     <div class="creator-profile__posts" *ngIf="subscribed">
-      <h2 *ngIf="isCreator">All Your Posts</h2>
-      <h2 *ngIf="!isCreator">All Posts</h2>
-      <div class="card" *ngFor="let card of cards">
-        <div class="card__image" [style.backgroundImage]="getBackgroundImage(card)"></div>
-        <div class="card__content">
-          <h2>{{card.content.split("!")[0]}}</h2>
-          <p>{{ card.content.split("!")[1] }}</p>
+      <!--CARDS DISPLAY FOR A SPECIFIC CREATOR-->
+      <div *ngIf="isCreator">
+        <h2>All Your Posts</h2>
+        <div class="card" *ngFor="let card of cards">
+          <div class="card__image" [style.backgroundImage]="getBackgroundImage(card)"></div>
+          <div class="card__content">
+            <h2>{{card.content.split("!")[0]}}</h2>
+            <p>{{ card.content.split("!")[1] }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!--CARDS DISPLAY FOR A FAN-->
+      <div *ngIf="!isCreator">
+        <h2>All Posts</h2>
+        <div class="card" *ngFor="let card of cards">
+          <div *ngIf="isSubscriptionGood(card.subscriptionTypeId)">
+            <div class="card__image" [style.backgroundImage]="getBackgroundImage(card)"></div>
+            <div class="card__content">
+              <h2>{{card.content.split("!")[0]}}</h2>
+              <p>{{ card.content.split("!")[1] }}</p>
+            </div>
+          </div>
+
+          <div *ngIf="!isSubscriptionGood(card.subscriptionTypeId)" [ngClass]="{'blur-effect': !isSubscriptionGood(card.subscriptionTypeId)}">
+            <div class="card__image" [style.backgroundImage]="getBackgroundImage(card)"></div>
+            <div class="card__content">
+              <h2>{{card.content.split("!")[0]}}</h2>
+              <p>{{ card.content.split("!")[1] }}</p>
+            </div>
+          </div>          
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 export const endpoint={
   BASE_URL:"http://localhost:8080",
   SUBSCRIBER_HOME:"/fan/creatorsNotSubscribedTo",
-  SUBSCRIPTION_TYPES:"/",
+  SUBSCRIPTION_TYPES:"/subscriptionType",
   LOGIN:"/user/login",
   SIGNUP:"/user/signup",
   SUBSCRIBER_GET_CREATORS:"/fan/seeCreators",

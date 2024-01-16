@@ -33,6 +33,7 @@ export class SubscriptionsCardListComponent {
 
   navigateToCreatorHome(card: any) {
     //not a nice way of doing things but it is what it is
+    localStorage.setItem("creator_id", card.creatorId)
     localStorage.setItem("creator_name", card.bio.split("!")[0])
     localStorage.setItem("creator_image", card.photoURL)
     this.router.navigate(['/creator/home'], {queryParams: {subscribe: true}})

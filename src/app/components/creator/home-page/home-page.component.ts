@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from "@angular/router";
 import { CreatorServiceComponent } from 'src/app/Services/creator-service.component';
+import { SubscriberServiceComponent } from 'src/app/Services/subscriber-service.component';
 
 @Component({
   selector: 'app-home-page-creator',
@@ -20,8 +21,9 @@ export class HomePageComponentCreator implements OnInit {
   isCreator: boolean = false;
   selectedOption: string = '';
   creator: string = '';
+  subscriptionType: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute, private creatorService: CreatorServiceComponent) {}
+  constructor(private router: Router, private route: ActivatedRoute, private creatorService: CreatorServiceComponent, private subscriberService: SubscriberServiceComponent) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params=>{
@@ -39,10 +41,11 @@ export class HomePageComponentCreator implements OnInit {
     this.coverImage = url != null ? url : ""
     this.profileImage = url != null ? url : ""
     this.getPosts()
+    this.getSubscriptions()
   }
 
   addCard() {
-    const content = this.newCardTitle + " ! " + this.newCardText + " ! " + 'https://i.scdn.co/image/ab67616100005174cf9b3d18027745226f6a5334' + " ! " + this.name
+    const content = this.newCardTitle + " ! " + this.newCardText + " ! " + this.profileImage + " ! " + this.name
     const newCard = {
       content: content,
       subscriptionTypeId: this.selectedOption
@@ -61,8 +64,6 @@ export class HomePageComponentCreator implements OnInit {
 
   getPosts(){
     this.creatorService.getPosts().subscribe(data=>{
-      console.log(data);
-      console.log(this.name)
       let posts = [];
       //use slice only if there are spaces between text and !
       for(let post of data){
@@ -74,8 +75,34 @@ export class HomePageComponentCreator implements OnInit {
     })
   }
 
+  getSubscriptions(){
+    this.subscriberService.getSubscriptions().subscribe(result => {
+      const creatorId = localStorage.getItem("creator_id")
+      const fanId = localStorage.getItem("fanId")
+      let subscriptionType = "LITE"
+      for(let subscription of result){
+        if(subscription.creatorId == creatorId && subscription.fanId == fanId)
+          subscriptionType = subscription.type
+      }
+      this.subscriptionType = subscriptionType
+    })
+  }
+
   getBackgroundImage(card: any): string {
     const url = card.content.split("!")[2];
     return 'url(' +  url  + ')';
+  }
+
+  isSubscriptionGood(subscriptionId: number): boolean{
+    let subscriptionTypeNumber = 0
+    if(this.subscriptionType == "LITE")
+      subscriptionTypeNumber = 1
+    if(this.subscriptionType == "PRO")
+      subscriptionTypeNumber = 2
+    if(this.subscriptionType == "ULTIMATE")
+      subscriptionTypeNumber = 3
+    if(subscriptionTypeNumber >= subscriptionId)
+      return true;
+    return false;
   }
 }
