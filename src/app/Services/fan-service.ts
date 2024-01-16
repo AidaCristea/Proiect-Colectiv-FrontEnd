@@ -11,4 +11,10 @@ export class FanService {
   public addFan(fan: Fan): Observable<Fan> {
     return this.http.post<any>(`${endpoint.BASE_URL}${endpoint.CREATE_FAN}`, fan);
   }
+  public getCreatorsForFan(fanId: number): Observable<any>{
+    return this.http.get<any>(`${endpoint.BASE_URL}${endpoint.SUBSCRIBER_GET_CREATORS}` + "/" + fanId)
+  }
+  public getFans(): Observable<any>{
+    return this.http.get<any>(`${endpoint.BASE_URL}` + "/fan")
+  }
 }

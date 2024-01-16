@@ -28,9 +28,9 @@ export class LoginComponent implements OnInit{
       response => {
         console.log(response)
         const userType = response.userType
-          this.router.navigateByUrl(userType === 'FAN' ? 'subscriber/home' : 'creator/home?subscribe=true').then(r => console.log(r));
-         this.authService.handleSessionStorage(response);
-         this.invalidCredentials=false;
+        this.router.navigateByUrl(userType === 'FAN' ? 'subscriber/home' : 'creator/home?subscribe=true').then(r => console.log(r));
+        this.authService.handleSessionStorage(response);
+        this.invalidCredentials=false;
         },
       error => {
         console.error('Error during login:', error);

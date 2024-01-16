@@ -2,10 +2,16 @@
 
 
 <div class="creator-profile">
-  <header class="page-header">
+  <header class="page-header" *ngIf="subscribed">
     <img src="{{coverImage}}" alt="Cover Image" class="cover-image">
     <img src="{{profileImage}}" alt="Profile Image" class="profile-image">
     <h1 class="header-name">{{name}}</h1>
+  </header>
+
+  <header class="page-header" *ngIf="!subscribed">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Red_Color.jpg/1536px-Red_Color.jpg" alt="Cover Image" class="cover-image">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Red_Color.jpg/1536px-Red_Color.jpg" alt="Profile Image" class="profile-image">
+    <h1 class="header-name">{{creator}}</h1>
   </header>
 
 
@@ -14,16 +20,53 @@
       <h2>Add new post</h2>
       <input type="text" class="input" placeholder="Title" [(ngModel)]="newCardTitle">
       <textarea class="input" placeholder="What's on your mind?" [(ngModel)]="newCardText"></textarea>
+
+      <div class="radio-buttons">
+        <label>
+          <input type="radio" name="LITE" value="1" [(ngModel)]="selectedOption"> LITE
+        </label>
+        <label>
+          <input type="radio" name="PRO" value="2" [(ngModel)]="selectedOption"> PRO
+        </label>
+        <label>
+          <input type="radio" name="ULTIMATE" value="3" [(ngModel)]="selectedOption"> ULTIMATE
+        </label>
+      </div>
       <button class="primary-button" (click)="addCard()">Post</button>
     </div>
 
     <div class="creator-profile__posts" *ngIf="subscribed">
-      <h2>All Your Posts</h2>
-      <div class="card" *ngFor="let card of cards">
-        <div class="card__image" [style.backgroundImage]="'url(' + card.imageUrl + ')'"></div>
-        <div class="card__content">
-          <h2>{{card.title}}</h2>
-          <p>{{ card.description }}</p>
+      <!--CARDS DISPLAY FOR A SPECIFIC CREATOR-->
+      <div *ngIf="isCreator">
+        <h2>All Your Posts</h2>
+        <div class="card" *ngFor="let card of cards">
+          <div class="card__image" [style.backgroundImage]="getBackgroundImage(card)"></div>
+          <div class="card__content">
+            <h2>{{card.content.split("!")[0]}}</h2>
+            <p>{{ card.content.split("!")[1] }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!--CARDS DISPLAY FOR A FAN-->
+      <div *ngIf="!isCreator">
+        <h2>All Posts</h2>
+        <div class="card" *ngFor="let card of cards">
+          <div *ngIf="isSubscriptionGood(card.subscriptionTypeId)">
+            <div class="card__image" [style.backgroundImage]="getBackgroundImage(card)"></div>
+            <div class="card__content">
+              <h2>{{card.content.split("!")[0]}}</h2>
+              <p>{{ card.content.split("!")[1] }}</p>
+            </div>
+          </div>
+
+          <div *ngIf="!isSubscriptionGood(card.subscriptionTypeId)" [ngClass]="{'blur-effect': !isSubscriptionGood(card.subscriptionTypeId)}">
+            <div class="card__image" [style.backgroundImage]="getBackgroundImage(card)"></div>
+            <div class="card__content">
+              <h2>{{card.content.split("!")[0]}}</h2>
+              <p>{{ card.content.split("!")[1] }}</p>
+            </div>
+          </div>          
         </div>
       </div>
     </div>

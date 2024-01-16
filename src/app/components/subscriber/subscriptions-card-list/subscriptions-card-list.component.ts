@@ -1,6 +1,7 @@
 import {Component, HostListener} from '@angular/core';
 import {Router} from "@angular/router";
 import {SubscriberServiceComponent} from "../../../Services/subscriber-service.component";
+import { FanService } from 'src/app/Services/fan-service';
 
 @Component({
   selector: 'app-subscriptions-card-list',
@@ -10,7 +11,7 @@ import {SubscriberServiceComponent} from "../../../Services/subscriber-service.c
 export class SubscriptionsCardListComponent {
   cards: any[] = [];
 
-  constructor(private router: Router, private subscriberService:SubscriberServiceComponent) {
+  constructor(private router: Router, private subscriberService:SubscriberServiceComponent, private fanService:FanService) {
   }
 
   ngOnInit(): void {
@@ -18,21 +19,23 @@ export class SubscriptionsCardListComponent {
   }
 
   getHomePageCreators():void{
-    this.subscriberService.getSubscribedCreators().subscribe(data=>this.cards=data)
+    let fanId = Number(localStorage.getItem("fanId"))
+    this.fanService.getCreatorsForFan(fanId).subscribe(data=>{
+      this.cards=data
+      console.log(this.cards)
+    })
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onScroll(event: Event): void {
-    const windowHeight = window.innerHeight;
-    const scrollY = window.scrollY || window.pageYOffset;
-    const documentHeight = document.documentElement.scrollHeight;
-
-    if (windowHeight + scrollY >= documentHeight) {
-      //this.generateCards(1);
-    }
+  getBackgroundImage(card: any): string {
+    const url = card.photoURL;
+    return 'url(' +  url  + ')';
   }
 
-  navigateToCreatorHome() {
-    this.router.navigate(['/creator/home'], {queryParams: {subscribed: true}})
+  navigateToCreatorHome(card: any) {
+    //not a nice way of doing things but it is what it is
+    localStorage.setItem("creator_id", card.creatorId)
+    localStorage.setItem("creator_name", card.bio.split("!")[0])
+    localStorage.setItem("creator_image", card.photoURL)
+    this.router.navigate(['/creator/home'], {queryParams: {subscribe: true}})
   }
 }
