@@ -70,7 +70,7 @@ export class HomePageComponentCreator implements OnInit {
         if(post.content.includes(this.name.slice(0, -1)))
           posts.push(post);
       }
-      this.cards = posts;
+      this.cards = [...posts].reverse();
       console.log(this.cards)
     })
   }
