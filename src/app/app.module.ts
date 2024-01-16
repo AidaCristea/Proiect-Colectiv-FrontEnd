@@ -19,7 +19,6 @@ import {NgOptimizedImage} from "@angular/common";
 import {provideHttpClient} from '@angular/common/http';
 import {MatRadioModule} from "@angular/material/radio";
 
-
 @NgModule({
   declarations: [
     AppComponent,
