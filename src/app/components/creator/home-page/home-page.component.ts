@@ -16,12 +16,17 @@ export class HomePageComponentCreator implements OnInit {
   coverImage = '';
   profileImage = '';
   cards: any = [];
-  subscribed: boolean;
+  subscribed: boolean = false;
   isCreator: boolean = false;
   selectedOption: string = '';
+  creator: string = '';
 
   constructor(private router: Router, private route: ActivatedRoute, private creatorService: CreatorServiceComponent) {
-    this.subscribed = JSON.parse(this.router.url.split("=")[1]) || false;
+    // this.subscribed = JSON.parse(this.router.url.split("=")[1]) || false;
+    this.route.queryParams.subscribe(params=>{
+      this.subscribed = params['subscribed'] === 'true';
+      this.creator = params['creator'];
+    })
     this.isCreator = localStorage.getItem('userType') == 'CREATOR';
   }
 

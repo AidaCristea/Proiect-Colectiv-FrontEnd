@@ -16,7 +16,7 @@
     <li class="navbar__link" *ngIf="!isCreator()">
       <a data-name="Subscriptions" href="subscriber/subscriptions">Subscriptions</a>
     </li>
-    <li class="navbar__link">
+    <li class="navbar__link" *ngIf="isCreator()">
       <a data-name="Feed">Feed</a>
     </li>
     <li class="navbar__link">

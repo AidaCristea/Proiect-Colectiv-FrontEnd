@@ -2,10 +2,16 @@
 
 
 <div class="creator-profile">
-  <header class="page-header">
+  <header class="page-header" *ngIf="isCreator">
     <img src="{{coverImage}}" alt="Cover Image" class="cover-image">
     <img src="{{profileImage}}" alt="Profile Image" class="profile-image">
     <h1 class="header-name">{{name}}</h1>
+  </header>
+
+  <header class="page-header" *ngIf="!isCreator">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Red_Color.jpg/1536px-Red_Color.jpg" alt="Cover Image" class="cover-image">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Red_Color.jpg/1536px-Red_Color.jpg" alt="Profile Image" class="profile-image">
+    <h1 class="header-name">{{creator}}</h1>
   </header>
 
 
