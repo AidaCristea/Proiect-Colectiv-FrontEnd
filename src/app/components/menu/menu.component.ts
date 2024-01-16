@@ -15,6 +15,14 @@ export class MenuComponent implements OnInit{
 
   constructor(private router: Router) {}
 
+  handleHomeNavigation() {
+    if(this.isCreator()){
+      this.router.navigateByUrl("creator/home?subscribe=true");
+    } else {
+      this.router.navigateByUrl("subscriber/home");
+    }
+  }
+
   toggleMenu() {
     const links = document.querySelector(".j-navbar-links");
     const menu = document.querySelector(".j-hamburger");

@@ -10,14 +10,14 @@
   </div>
 
   <ul class="navbar__links j-navbar-links">
-    <li class="navbar__link">
-      <a data-name="home" href="/subscriber/home">Home</a>
+    <li class="navbar__link" (click)="handleHomeNavigation()">
+      <a data-name="home">Home</a>
     </li>
     <li class="navbar__link" *ngIf="!isCreator()">
       <a data-name="Subscriptions" href="subscriber/subscriptions">Subscriptions</a>
     </li>
     <li class="navbar__link" *ngIf="isCreator()">
-      <a data-name="Feed">Feed</a>
+      <a data-name="Subscribers">Subscribers</a>
     </li>
     <li class="navbar__link">
       <a data-name="Logout" (click)="logout()">Logout</a>

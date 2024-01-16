@@ -21,19 +21,19 @@ export class HomePageComponentCreator implements OnInit {
   selectedOption: string = '';
   creator: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute, private creatorService: CreatorServiceComponent) {
-    // this.subscribed = JSON.parse(this.router.url.split("=")[1]) || false;
-    this.route.queryParams.subscribe(params=>{
-      this.subscribed = params['subscribed'] === 'true';
-      this.creator = params['creator'];
-    })
-    this.isCreator = localStorage.getItem('userType') == 'CREATOR';
-  }
+  constructor(private router: Router, private route: ActivatedRoute, private creatorService: CreatorServiceComponent) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params=>{
+      this.subscribed = params['subscribe'] === 'true';
+      this.creator = params['creator'];
+    })
+    console.log(this.subscribed)
+    this.isCreator = localStorage.getItem('userType') == 'CREATOR';
+
     //initialize name and image from user data
-    let username = localStorage.getItem("username")
-    let url = localStorage.getItem("photoURL")
+    let username = this.isCreator ? localStorage.getItem("username") : localStorage.getItem("creator_name") 
+    let url = this.isCreator ? localStorage.getItem("photoURL") : localStorage.getItem("creator_image")
     var firstCharUpper = username != null ? (username.charAt(0).toUpperCase() + username.slice(1)) : "";
     this.name = firstCharUpper
     this.coverImage = url != null ? url : ""
@@ -47,7 +47,7 @@ export class HomePageComponentCreator implements OnInit {
       content: content,
       subscriptionTypeId: this.selectedOption
     };
-    this.cards.push(newCard);
+    this.cards.unshift(newCard);
     console.log(this.selectedOption)
     this.addPost(newCard);
   }
@@ -64,8 +64,9 @@ export class HomePageComponentCreator implements OnInit {
       console.log(data);
       console.log(this.name)
       let posts = [];
+      //use slice only if there are spaces between text and !
       for(let post of data){
-        if(post.content.includes(this.name))
+        if(post.content.includes(this.name.slice(0, -1)))
           posts.push(post);
       }
       this.cards = posts;

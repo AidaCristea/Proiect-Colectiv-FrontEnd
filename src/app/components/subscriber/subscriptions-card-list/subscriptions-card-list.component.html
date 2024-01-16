@@ -8,7 +8,7 @@
         <h2>{{ card.bio.split("!")[0] }}</h2>
         <p>{{ card.bio.split("!")[1] }}</p>
         <div class="card__buttons">
-          <button class="secondary-button" (click)="navigateToCreatorHome()">See Posts</button>
+          <button class="secondary-button" (click)="navigateToCreatorHome(card)">See Posts</button>
         </div>
       </div>
     </div>

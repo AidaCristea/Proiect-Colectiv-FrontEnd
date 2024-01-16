@@ -31,18 +31,10 @@ export class SubscriptionsCardListComponent {
     return 'url(' +  url  + ')';
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onScroll(event: Event): void {
-    const windowHeight = window.innerHeight;
-    const scrollY = window.scrollY || window.pageYOffset;
-    const documentHeight = document.documentElement.scrollHeight;
-
-    if (windowHeight + scrollY >= documentHeight) {
-      //this.generateCards(1);
-    }
-  }
-
-  navigateToCreatorHome() {
-    this.router.navigate(['/creator/home'], {queryParams: {subscribed: true}})
+  navigateToCreatorHome(card: any) {
+    //not a nice way of doing things but it is what it is
+    localStorage.setItem("creator_name", card.bio.split("!")[0])
+    localStorage.setItem("creator_image", card.photoURL)
+    this.router.navigate(['/creator/home'], {queryParams: {subscribe: true}})
   }
 }
