@@ -23,4 +23,7 @@ export class SubscriberServiceComponent {
   getSubscriptions(){
     return this.http.get<any>(endpoint.BASE_URL+endpoint.SUBSCRIPTION_TYPES)
   }
+  addSubscription(subscription: any){
+    return this.http.post<any>(endpoint.BASE_URL+endpoint.SUBSCRIPTION_TYPES, subscription);
+  }
 }

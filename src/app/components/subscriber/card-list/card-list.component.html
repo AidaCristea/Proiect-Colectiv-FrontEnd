@@ -19,7 +19,7 @@
       <h2 class="subscription-popout__title">Choose a Subscription for {{ card.bio.split("!")[0] }}!</h2>
       <div class="subscription-popout__options">
         <ng-container *ngFor="let subscription of subscriptions; let last = last">
-          <div class="subscription-popout__option card">
+          <div class="subscription-popout__option card" (click)="subscribeToCreator(subscription)">
             <h3 class="subscription-type">{{ subscription.type }}</h3>
             <p class="subscription-description">{{ subscription.description }}</p>
             <h2 class="subscription-popout__price">{{subscription.price}}</h2>
