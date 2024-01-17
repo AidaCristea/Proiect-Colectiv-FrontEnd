@@ -8,7 +8,7 @@ import {endpoint} from "./endpoints";
 export class CreatorServiceComponent {
   constructor(private http: HttpClient) { }
 
-  addCreator(creator: Creator): Observable<any> {
+  addCreator(creator: any): Observable<any> {
     return this.http.post(`${endpoint.BASE_URL}${endpoint.ADD_CREATOR}`, creator);
   }
 

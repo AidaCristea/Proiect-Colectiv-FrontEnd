@@ -15,6 +15,7 @@ export class CardListComponent implements OnInit{
   subscriptions: any[] = [];
   fanId: number = 0;
   creatorsSubscribedTo: any[] = [];
+  creatorId: number = 0;
 
   constructor(private router: Router, private subscriberService:SubscriberServiceComponent, private fanService: FanService) {
   }
@@ -85,6 +86,8 @@ export class CardListComponent implements OnInit{
 
   openSubscriptionPopout(card: any): void {
     card.showPopout = true;
+    this.creatorId = card.creatorId;
+    console.log(this.creatorId)
   }
 
   closeSubscriptionPopout(card: any): void {
@@ -99,5 +102,19 @@ export class CardListComponent implements OnInit{
   getBackgroundImage(card: any): string {
     const url = card.photoURL;
     return 'url(' +  url  + ')';
+  }
+
+  subscribeToCreator(subscription: any) {
+    let subscription_type = {
+      description: subscription.type + " subscription",
+      price: subscription.price,
+      type: subscription.type,
+      creatorId: this.creatorId,
+      fanId: this.fanId
+    }
+    this.subscriberService.addSubscription(subscription_type).subscribe(result=>{
+      console.log(result)
+      this.router.navigateByUrl("/subscriber/subscriptions")
+    })
   }
 }

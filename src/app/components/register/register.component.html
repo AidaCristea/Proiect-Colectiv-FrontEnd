@@ -5,7 +5,7 @@
     <p class="register__subtitle">Create an account for the hottest app of 2024</p>
     <form>
       <div class="form-group">
-        <input class="input" type="email" id="email" name="email" placeholder="Email" required [(ngModel)]="email">
+        <input class="input" type="email" id="email" name="email" placeholder="Username" required [(ngModel)]="email">
       </div>
       <div class="form-group">
         <input class="input" type="password" id="password" name="password" placeholder="Password" required
@@ -40,14 +40,17 @@
           <textarea class="input" id="bio" name="bio" placeholder="Enter your bio" [(ngModel)]="bio"></textarea>
         </div>
         <div class="form-group">
+          <label>Enter price for Ultimate</label>
           <input class="input" type="text" id="priceUltimate" name="priceUltimate"
                  placeholder="Enter price for Ultimate" [(ngModel)]="priceUltimate">
         </div>
         <div class="form-group">
+          <label>Enter price for Lite</label>
           <input class="input" type="text" id="priceLite" name="priceLite" placeholder="Enter price for Lite"
                  [(ngModel)]="priceLite">
         </div>
         <div class="form-group">
+          <label>Enter price for Pro</label>
           <input class="input" type="text" id="pricePro" name="pricePro" placeholder="Enter price for Pro"
                  [(ngModel)]="pricePro">
         </div>

@@ -8,7 +8,7 @@ import {Fan} from "../components/Entity/Fan";
 export class FanService {
   constructor(private http:HttpClient) {
   }
-  public addFan(fan: Fan): Observable<Fan> {
+  public addFan(fan: any): Observable<any> {
     return this.http.post<any>(`${endpoint.BASE_URL}${endpoint.CREATE_FAN}`, fan);
   }
   public getCreatorsForFan(fanId: number): Observable<any>{

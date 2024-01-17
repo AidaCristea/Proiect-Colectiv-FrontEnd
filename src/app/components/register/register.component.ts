@@ -47,16 +47,19 @@ export class RegisterComponent  {
       let userType = this.isCreator ? "CREATOR" : "FAN";
       const user = this.createUserObject(userType);
 
+      console.log("THIS IS THE USER: ")
+      console.log(user)
+
       this.authService.registerUser(user).subscribe(
         response => {
           this.authService.handleSessionStorage(response)
           if(this.isCreator){
-            const creator = this.createCreatorDto();
+            const creator = this.createCreatorDto(user.email);
             this.addCreator(creator);
           }
          else{
-            const fanPreferences = this.getSelectedPreferencesAsString();
-            this.composeFan(fanPreferences);
+            let newFanPreferences = user.email + " ! " + this.getSelectedPreferencesAsString();
+            this.composeFan(newFanPreferences);
           }
           console.log('User registered successfully:', response);
         },
@@ -85,10 +88,12 @@ export class RegisterComponent  {
   }
 
   private composeFan(preferences: string): void {
-    const fan: Fan = {
-      fanId: Number(localStorage.getItem("id")),
+    const fan = {
+      //fanId: Number(localStorage.getItem("id")),
       preferences: preferences
     };
+    console.log("THIS IS A FAN: ")
+    console.log(fan)
     this.fanService.addFan(fan).subscribe(
       fanResponse => {
         console.log('Fan added successfully:', fanResponse);
@@ -105,7 +110,9 @@ export class RegisterComponent  {
     this.passwordMismatch = this.password !== this.confirmPassword;
   }
 
-  private addCreator(creatorDto: Creator): void {
+  private addCreator(creatorDto: any): void {
+    console.log("THIS IS A CREATOR:")
+    console.log(creatorDto)
     this.creatorService.addCreator(creatorDto).subscribe(
       creatorResponse => {
         console.log('Creator added successfully:', creatorResponse);
@@ -118,10 +125,10 @@ export class RegisterComponent  {
     );
   }
 
-  private createCreatorDto(): Creator {
+  private createCreatorDto(email: string): any {
     return {
-      creatorId: Number(localStorage.getItem("id")),
-      bio: this.bio, // Assuming you have a 'bio' property in your component
+      //creatorId: Number(localStorage.getItem("id")),
+      bio: email + " ! " + this.bio, // Assuming you have a 'bio' property in your component
       priceUltimate: this.priceUltimate, // Assuming you have these properties in your component
       priceLite: this.priceLite,
       pricePro: this.pricePro,
